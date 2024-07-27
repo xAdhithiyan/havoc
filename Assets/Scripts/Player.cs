@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using System.Xml.Serialization;
+using Unity.VisualScripting;
 using UnityEditor.Experimental.GraphView;
 using UnityEditor.ShaderGraph.Internal;
 using UnityEngine;
@@ -27,25 +28,43 @@ public class Player : MonoBehaviour
 	[Header("Camera")]
 	[SerializeField] private CameraManager _cameraManager;
 
+	[Header("sword attack")]
+	[SerializeField] private Transform _attackPoint;
+	[SerializeField] private LayerMask _layerMask;
+	[SerializeField] private float _attackRange = 0.5f;
+	private float _swordAttackDamange = 2f;
+	private float _attacksPerSeconds = 4f;
+	private float _nextAttackTime = 0f;
+
+	[Header("Health values")]
+	private float _maxHeath = 20f;
+	private float _currentHealth;
+
 	private Vector2 _directionOfPlayer;
   private Rigidbody2D _rb;
+	private Animator _animator;
 
   private KeyCode _upKey = KeyCode.W;
   private KeyCode _downkey = KeyCode.S;
   private KeyCode _leftKey = KeyCode.A;
   private KeyCode _rightKey = KeyCode.D;
 	private KeyCode _dashKey = KeyCode.LeftShift;
+	private KeyCode _attackKey = KeyCode.Mouse0;
 
   void Start()
   {
     _rb = GetComponent<Rigidbody2D>();
-    _cameraManager.assignCamera(transform);   
+    _cameraManager.assignCamera(transform);
+		_animator = GetComponent<Animator>();
+		_currentHealth = _maxHeath;
   }
 
 	private void Update()
 	{
 		directionalMovement();
 		dash();
+		attack();
+
   }
 	private void FixedUpdate()
 	{
@@ -54,7 +73,9 @@ public class Player : MonoBehaviour
 
 	private void directionalMovement()
   {
-		if(_dashEnabled)
+		_animator.SetBool("dash", _dashEnabled);	
+		_animator.SetBool("dash", _dashEnabled);	
+		if (_dashEnabled)
 		{
 			return;
 		}
@@ -90,6 +111,7 @@ public class Player : MonoBehaviour
 
 		// increasing the magnitute 
 		_rb.velocity = _directionOfPlayer * _currentSpeed;
+		_animator.SetFloat("speed", _currentSpeed);
 		// Debug.Log(_currentSpeed);
 	}
 
@@ -100,7 +122,6 @@ public class Player : MonoBehaviour
 			StartCoroutine(waitForDashToEnd());
 			_dashEnabled = true;
 			_rb.velocity = _rb.velocity.normalized * _dashSpeed;
-			Debug.Log("Dashing");
 		}
 	}
 	
@@ -109,7 +130,6 @@ public class Player : MonoBehaviour
 	{
 		yield return new WaitForSeconds(_dashTime);
 		_dashEnabled = false;
-		Debug.Log("Dashing ended");
 	}
 
 	private void playerLookDirection()
@@ -119,7 +139,7 @@ public class Player : MonoBehaviour
 
 		// gets the angle by calculating 'tan a = y / x' of rotation in radians 
 		float angle = Mathf.Atan2(directionOfCursor.y, directionOfCursor.x);
-		transform.rotation = Quaternion.Euler(0, 0, angle * Mathf.Rad2Deg);
+		transform.rotation = Quaternion.Euler(0, 0, (angle * Mathf.Rad2Deg));
 	}
 
 	// not being used.
@@ -129,4 +149,38 @@ public class Player : MonoBehaviour
     Vector2 grappleDirectionNormalized = grappleDirection.normalized;
     _rb.AddForce(grappleDirectionNormalized * _grappleForce, ForceMode2D.Impulse);
   }
+
+	private void attack()
+	{
+		if(Time.time >= _nextAttackTime)
+		{
+			if (Input.GetKeyDown(_attackKey))
+			{
+				_animator.SetTrigger("attack");
+				// gives all the objects with collider that overlap the formed circle; 
+				Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(_attackPoint.position, _attackRange, _layerMask);
+				foreach (Collider2D enemy in hitEnemies)
+				{
+					// we are getting the script that is attached to the enemy gameobject
+					enemy.GetComponent<enemy1>().takeDamage(_swordAttackDamange);
+
+				}
+				_nextAttackTime = Time.time + 1 / _attacksPerSeconds;
+			}
+		}
+	}
+
+	private void OnDrawGizmosSelected()
+	{
+		if(_attackPoint != null)
+		{
+			Gizmos.DrawWireSphere(_attackPoint.position, _attackRange);
+		}
+	}
+	
+	public void takeDamage(float damage)
+	{
+		_currentHealth -= damage;
+		Debug.Log("player has taken damage" + _currentHealth);
+	}
 }
