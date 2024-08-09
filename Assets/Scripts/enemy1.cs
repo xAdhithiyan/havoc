@@ -4,10 +4,17 @@ using System.Collections.Generic;
 using UnityEditor.Rendering;
 using UnityEngine;
 
-public class enemy1 : MonoBehaviour
+// this will inherited by multiple enemy classes
+public abstract class EnemyBase : MonoBehaviour
 {
+	public abstract void takeDamage(float damage);
+}
+
+public class enemy1 : EnemyBase
+{
+	[Header("movement")]
 	[SerializeField] Transform _playerTransform;
-	[SerializeField] private float _lerpSpeed;
+ 	[SerializeField] private float _lerpSpeed;
 	[SerializeField] private float _backupSpeed;
 	[SerializeField] private float _backupTime;
 	[SerializeField] private Player _player;
@@ -33,7 +40,7 @@ public class enemy1 : MonoBehaviour
 	}
 	private void Update()
 	{
-		if(_idlePosition || _dead)
+		if(_idlePosition || _dead || _playerTransform == null)
 		{
 			return;
 		}
@@ -57,6 +64,7 @@ public class enemy1 : MonoBehaviour
 		// player takes damage
 		_player.takeDamage(_attackValue);
 		StartCoroutine(waitForDashToEnd());
+		Debug.Log("hellowtf");
 	}
 
 	private IEnumerator waitForDashToEnd()
@@ -73,7 +81,7 @@ public class enemy1 : MonoBehaviour
 		_onContact= false;
 	}
 
-	public void takeDamage(float damage)
+	public override void takeDamage(float damage)
 	{
 		_currentHealth -= damage;
 		_animator.SetTrigger("attack");

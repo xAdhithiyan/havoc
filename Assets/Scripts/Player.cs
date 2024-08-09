@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
@@ -11,15 +12,15 @@ using UnityEngine.UIElements;
 
 public class Player : MonoBehaviour
 {
-  [Header("Movement values")]
-  [SerializeField] private float _maxSpeed = 8f;
-  [SerializeField] private float _acceleration = 10f;
-  [SerializeField] private float _decceleration = 12f;
+	[Header("Movement values")]
+	[SerializeField] private float _maxSpeed = 8f;
+	[SerializeField] private float _acceleration = 10f;
+	[SerializeField] private float _decceleration = 12f;
 	[SerializeField] private float _grappleForce = 2f;
 	private float _currentSpeed = 0f;
 	private float _horizontalValue;
-  private float _verticalValue;
-	
+	private float _verticalValue;
+
 	[Header("dash values")]
 	[SerializeField] private float _dashSpeed = 22f;
 	[SerializeField] private float _dashTime = 0.1f;
@@ -40,23 +41,31 @@ public class Player : MonoBehaviour
 	private float _maxHeath = 20f;
 	private float _currentHealth;
 
+	[Header("shuriken stuff")]
+	[SerializeField] private shuriken _shurikenPrefab;
+	private shuriken _singleShuriken;
+
+	[SerializeField] private HealthBar _healthBar;
+	 
 	private Vector2 _directionOfPlayer;
-  private Rigidbody2D _rb;
+	private Rigidbody2D _rb;
 	private Animator _animator;
 
-  private KeyCode _upKey = KeyCode.W;
-  private KeyCode _downkey = KeyCode.S;
-  private KeyCode _leftKey = KeyCode.A;
-  private KeyCode _rightKey = KeyCode.D;
+	private KeyCode _upKey = KeyCode.W;
+	private KeyCode _downkey = KeyCode.S;
+	private KeyCode _leftKey = KeyCode.A;
+	private KeyCode _rightKey = KeyCode.D;
 	private KeyCode _dashKey = KeyCode.LeftShift;
 	private KeyCode _attackKey = KeyCode.Mouse0;
+	private KeyCode _secondaryAttackKey = KeyCode.Mouse1;
 
-  void Start()
+	void Start()
   {
     _rb = GetComponent<Rigidbody2D>();
     _cameraManager.assignCamera(transform);
 		_animator = GetComponent<Animator>();
 		_currentHealth = _maxHeath;
+		_healthBar.setMaxHealth(_currentHealth);
   }
 
 	private void Update()
@@ -64,8 +73,8 @@ public class Player : MonoBehaviour
 		directionalMovement();
 		dash();
 		attack();
-
-  }
+		checkForShurikenThrow();
+	}
 	private void FixedUpdate()
 	{
 		playerLookDirection();
@@ -161,15 +170,27 @@ public class Player : MonoBehaviour
 				Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(_attackPoint.position, _attackRange, _layerMask);
 				foreach (Collider2D enemy in hitEnemies)
 				{
-					// we are getting the script that is attached to the enemy gameobject
-					enemy.GetComponent<enemy1>().takeDamage(_swordAttackDamange);
-
+					// all the enemy class inherit the EnemyBase class. so EnemyBase acts as a middle way to the different enemy class
+					EnemyBase enemyScript = enemy.GetComponent<EnemyBase>();
+					if(enemyScript != null )
+					{
+						enemyScript.takeDamage(_swordAttackDamange);
+					}
 				}
 				_nextAttackTime = Time.time + 1 / _attacksPerSeconds;
 			}
 		}
 	}
-
+	private void checkForShurikenThrow()
+	{
+		if(Input.GetKeyDown(_secondaryAttackKey))
+		{
+			Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+			// create a shuriken and throw it
+			_singleShuriken = Instantiate(_shurikenPrefab, transform.position, transform.rotation);
+			_singleShuriken.throwShuriken(transform.position, mousePosition);
+		}
+	}
 	private void OnDrawGizmosSelected()
 	{
 		if(_attackPoint != null)
@@ -181,6 +202,7 @@ public class Player : MonoBehaviour
 	public void takeDamage(float damage)
 	{
 		_currentHealth -= damage;
+		_healthBar.setHealth(_currentHealth);
 		Debug.Log("player has taken damage" + _currentHealth);
 	}
 }
