@@ -18,6 +18,8 @@ public class enemy1 : EnemyBase
 	[SerializeField] private float _backupSpeed;
 	[SerializeField] private float _backupTime;
 	[SerializeField] private Player _player;
+
+	[SerializeField] private EnemyHealthBar _enemyHealthBar;
 	
 	private Vector3 _towardsPlayerDirection;
 	private bool _onContact = false;
@@ -37,6 +39,7 @@ public class enemy1 : EnemyBase
 		_rb = GetComponent<Rigidbody2D>();
 		_animator = GetComponent<Animator>();
 		_currentHealth = _maxHealth;
+		//_enemyHealthBar.setEnemyMaxHealth(_currentHealth);
 	}
 	private void Update()
 	{
@@ -85,6 +88,7 @@ public class enemy1 : EnemyBase
 	{
 		_currentHealth -= damage;
 		_animator.SetTrigger("attack");
+		_enemyHealthBar.setEnemyHealth(_currentHealth);
 
 		if (_currentHealth <= 0)
 		{

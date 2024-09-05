@@ -15,11 +15,14 @@ public class CameraManager : MonoBehaviour
 
 /* 
  - make the characters stay in the arena
- - make health bar
- - make 3 more enemies with one boss 
+ - make 2 more enemies with one boss 
+ - make dash and shuriken limit
  - make that gimick
  - annimation and particle effects
  - portal
  - the entire gameplay loop
  - make the arena (half left) and add flags with names
+
+ - path finder
+ - shaders
 */

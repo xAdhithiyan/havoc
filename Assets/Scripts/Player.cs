@@ -24,7 +24,7 @@ public class Player : MonoBehaviour
 	[Header("dash values")]
 	[SerializeField] private float _dashSpeed = 22f;
 	[SerializeField] private float _dashTime = 0.1f;
-	private bool _dashEnabled = false;
+	public bool _dashEnabled = false;
 
 	[Header("Camera")]
 	[SerializeField] private CameraManager _cameraManager;

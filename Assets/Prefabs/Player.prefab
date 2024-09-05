@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 2952660505209197188}
   m_Layer: 8
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: MainPlayer
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -77,7 +77,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 5
+  m_SortingOrder: 10
   m_Sprite: {fileID: 1454410501, guid: 7d5d072f47ed0784c8c76e48ea8f42e9, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -175,7 +175,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   _attackRange: 0.5
-  _shuriken: {fileID: 0}
+  _shurikenPrefab: {fileID: 318850640912390936, guid: 3e522fffa719de647a2b3e77bc459a6c, type: 3}
+  _healthBar: {fileID: 0}
 --- !u!95 &2952660505209197188
 Animator:
   serializedVersion: 5
