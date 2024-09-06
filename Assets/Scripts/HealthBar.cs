@@ -9,6 +9,9 @@ public class HealthBar : MonoBehaviour
 	[SerializeField] private Gradient _gradient;
 	[SerializeField] Image fill;
 
+	[SerializeField] private Slider dashSlider;
+	[SerializeField] private Slider shurikenSlider;
+
 	public void setMaxHealth(float maxHealth)
 	{
 		slider.maxValue = maxHealth;
@@ -22,5 +25,27 @@ public class HealthBar : MonoBehaviour
 		slider.value = health;
 
 		fill.color = _gradient.Evaluate(slider.normalizedValue);
+	}
+
+	public void setMaxDashValue(float maxHealth)
+	{
+		dashSlider.maxValue = maxHealth;
+		dashSlider.value = maxHealth;
+	}
+
+	public void setDashValue(float health)
+	{
+		dashSlider.value = health;
+	}
+
+	public void setMaxShurikenValue(float maxHealth)
+	{
+		shurikenSlider.maxValue = maxHealth;
+		shurikenSlider.value = maxHealth;
+	}
+
+	public void setShurikenValue(float health)
+	{
+		shurikenSlider.value = health;
 	}
 }

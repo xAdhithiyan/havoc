@@ -15,8 +15,7 @@ public class CameraManager : MonoBehaviour
 
 /* 
  - make the characters stay in the arena
- - make 2 more enemies with one boss 
- - make dash and shuriken limit
+ - one boss 
  - make that gimick
  - annimation and particle effects
  - portal

@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 5397605937160096630}
   - component: {fileID: 8371359906796601326}
   - component: {fileID: 1462926630012442538}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: enemy5
   m_TagString: enemy5
   m_Icon: {fileID: 0}
@@ -101,7 +101,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _player: {fileID: 0}
-  _moveSpeed: 3
+  _moveSpeed: 4
   _checkRadius: 3
   _playerLayerMask:
     serializedVersion: 2
@@ -111,6 +111,7 @@ MonoBehaviour:
   dogeWindow: 0.3
   _attackValue: 4
   _maxHealth: 10
+  _animator: {fileID: 8371359906796601326}
   _endJump: 0
 --- !u!50 &5397605937160096630
 Rigidbody2D:

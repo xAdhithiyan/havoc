@@ -169,6 +169,8 @@ MonoBehaviour:
   _grappleForce: 10
   _dashSpeed: 30
   _dashTime: 0.1
+  _dashIncrement: 1
+  _dashEnabled: 0
   _cameraManager: {fileID: 0}
   _attackPoint: {fileID: 1905924807627716692}
   _layerMask:
@@ -176,6 +178,7 @@ MonoBehaviour:
     m_Bits: 128
   _attackRange: 0.5
   _shurikenPrefab: {fileID: 318850640912390936, guid: 3e522fffa719de647a2b3e77bc459a6c, type: 3}
+  _shurikenIncrement: 1
   _healthBar: {fileID: 0}
 --- !u!95 &2952660505209197188
 Animator:

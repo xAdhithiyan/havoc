@@ -24,7 +24,11 @@ public class Player : MonoBehaviour
 	[Header("dash values")]
 	[SerializeField] private float _dashSpeed = 22f;
 	[SerializeField] private float _dashTime = 0.1f;
+	[SerializeField] private float _dashIncrement;
+	private float _maxDash = 2f;
+	private float _currentDash;
 	public bool _dashEnabled = false;
+	
 
 	[Header("Camera")]
 	[SerializeField] private CameraManager _cameraManager;
@@ -43,7 +47,11 @@ public class Player : MonoBehaviour
 
 	[Header("shuriken stuff")]
 	[SerializeField] private shuriken _shurikenPrefab;
+	[SerializeField] private float _shurikenIncrement;
 	private shuriken _singleShuriken;
+	private float _maxShuriken = 3;
+	private float _currentShuriken = 0f;
+
 
 	[SerializeField] private HealthBar _healthBar;
 	 
@@ -65,8 +73,13 @@ public class Player : MonoBehaviour
     _cameraManager.assignCamera(transform);
 		_animator = GetComponent<Animator>();
 		_currentHealth = _maxHeath;
+		_currentDash = _maxDash;
+		_currentShuriken = _maxShuriken;
+		_currentShuriken = _maxShuriken;
 		_healthBar.setMaxHealth(_currentHealth);
-  }
+		_healthBar.setMaxDashValue(_currentDash);
+		_healthBar.setMaxShurikenValue(_currentShuriken);
+	}
 
 	private void Update()
 	{
@@ -74,6 +87,8 @@ public class Player : MonoBehaviour
 		dash();
 		attack();
 		checkForShurikenThrow();
+		dashRefresh();
+		shurikenRefresh();
 	}
 	private void FixedUpdate()
 	{
@@ -82,7 +97,6 @@ public class Player : MonoBehaviour
 
 	private void directionalMovement()
   {
-		_animator.SetBool("dash", _dashEnabled);	
 		_animator.SetBool("dash", _dashEnabled);	
 		if (_dashEnabled)
 		{
@@ -126,11 +140,12 @@ public class Player : MonoBehaviour
 
 	private void dash()
 	{
-		if (Input.GetKeyDown(_dashKey) && !_dashEnabled)
+		if (Input.GetKeyDown(_dashKey) && !_dashEnabled && _currentDash >= 1)
 		{
 			StartCoroutine(waitForDashToEnd());
 			_dashEnabled = true;
 			_rb.velocity = _rb.velocity.normalized * _dashSpeed;
+			_currentDash -= 1;
 		}
 	}
 	
@@ -183,12 +198,13 @@ public class Player : MonoBehaviour
 	}
 	private void checkForShurikenThrow()
 	{
-		if(Input.GetKeyDown(_secondaryAttackKey))
+		if(Input.GetKeyDown(_secondaryAttackKey) && _currentShuriken >= 1)
 		{
 			Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 			// create a shuriken and throw it
 			_singleShuriken = Instantiate(_shurikenPrefab, transform.position, transform.rotation);
 			_singleShuriken.throwShuriken(transform.position, mousePosition);
+			_currentShuriken -= 1;
 		}
 	}
 	private void OnDrawGizmosSelected()
@@ -204,5 +220,23 @@ public class Player : MonoBehaviour
 		_currentHealth -= damage;
 		_healthBar.setHealth(_currentHealth);
 		Debug.Log("player has taken damage" + _currentHealth);
+	}
+
+	private void dashRefresh()
+	{
+		if(_currentDash < _maxDash)
+		{
+			_currentDash += _dashIncrement * Time.deltaTime;
+			_healthBar.setDashValue(_currentDash);
+		}
+	}
+
+	private void shurikenRefresh()
+	{
+		if(_currentShuriken < _maxShuriken)
+		{
+			_currentShuriken += _shurikenIncrement * Time.deltaTime;
+			_healthBar.setShurikenValue(_currentShuriken);
+		}
 	}
 }
