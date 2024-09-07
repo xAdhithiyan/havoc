@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9ad4a9ae4cee7aa43a913381b37fe4b3, type: 3}
+  m_Name: Bob
+  m_EditorClassIdentifier: 
+  dialoges:
+  - name: Me
+    sentence: Hello! I have an appointment scheduled for 6 today
+  - name: Bob
+    sentence: 'Hey! Can i have ur name.
+
+'
+  - name: Me
+    sentence: Sure. My name is ...
+  - name: Me
+    sentence: Our Stylist is currently busy with another client. It wont take more
+      then 5 mins.
+  - name: Me
+    sentence: Thats fine. ill hang aroung here.
