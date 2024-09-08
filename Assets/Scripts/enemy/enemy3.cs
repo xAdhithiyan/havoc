@@ -6,7 +6,7 @@ using UnityEngine;
 public class enemy3 : EnemyBase
 {
 	[Header("movement")]
-	[SerializeField] private Transform _playerPosition;
+	[SerializeField] private Player _player;
 	[SerializeField] private float _checkRadius;
 	[SerializeField] private LayerMask _playerLayerMask;
 	[SerializeField] private float _moveSpeed;
@@ -27,6 +27,7 @@ public class enemy3 : EnemyBase
 
 	private void Start()
 	{
+		_player = FindObjectOfType<Player>();
 		_rb = GetComponent<Rigidbody2D>();
 		_animator = GetComponent<Animator>();
 		_currentHealth = _maxHealth;
@@ -47,14 +48,14 @@ public class enemy3 : EnemyBase
 
 	private void movement()
 	{
-		Vector2 moveDirection = (_playerPosition.position - transform.position).normalized;
+		Vector2 moveDirection = (_player.transform.position - transform.position).normalized;
 		_rb.velocity = moveDirection * _moveSpeed;
 		_animator.SetBool("move", true);
 	}
 	private void lookDirection()
 	{
 
-		Vector3 directionTowardsPlayer = _playerPosition.position - transform.position;
+		Vector3 directionTowardsPlayer = _player.transform.position - transform.position;
 
 		// gets the angle by calculating 'tan a = y / x' of rotation in radians 
 		float angle = Mathf.Atan2(directionTowardsPlayer.y, directionTowardsPlayer.x);

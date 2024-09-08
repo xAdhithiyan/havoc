@@ -14,13 +14,10 @@ public class CameraManager : MonoBehaviour
 }
 
 /* 
- - make the characters stay in the arena
- - one boss 
- - make that gimick
- - annimation and particle effects and sound
+ - animation and particle effects and sound
  - the entire gameplay loop
- - make the arena (half left) and add flags with names
- - resume
+ - 2nd cutscene 
+ - menu
 
  - path finder
  - shaders

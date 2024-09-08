@@ -13,7 +13,6 @@ public abstract class EnemyBase : MonoBehaviour
 public class enemy1 : EnemyBase
 {
 	[Header("movement")]
-	[SerializeField] Transform _playerTransform;
  	[SerializeField] private float _lerpSpeed;
 	[SerializeField] private float _backupSpeed;
 	[SerializeField] private float _backupTime;
@@ -39,21 +38,22 @@ public class enemy1 : EnemyBase
 		_rb = GetComponent<Rigidbody2D>();
 		_animator = GetComponent<Animator>();
 		_currentHealth = _maxHealth;
+		_player = FindObjectOfType<Player>();	
 		//_enemyHealthBar.setEnemyMaxHealth(_currentHealth);
 	}
 	private void Update()
 	{
-		if(_idlePosition || _dead || _playerTransform == null)
+		if(_idlePosition || _dead || _player.transform == null)
 		{
 			return;
 		}
 
 		if(_onContact)
 		{
-			transform.position += (transform.position - _playerTransform.position).normalized * _backupSpeed * Time.deltaTime;
+			transform.position += (transform.position - _player.transform.position).normalized * _backupSpeed * Time.deltaTime;
 			return;
 		}
-		_towardsPlayerDirection = (_playerTransform.position - transform.position).normalized;
+		_towardsPlayerDirection = (_player.transform.position - transform.position).normalized;
 		transform.position += _towardsPlayerDirection * _lerpSpeed * Time.deltaTime;
 
 		// not using lerp because the interpolation value is very small(speed reduces) when distance is small
@@ -67,7 +67,6 @@ public class enemy1 : EnemyBase
 		// player takes damage
 		_player.takeDamage(_attackValue);
 		StartCoroutine(waitForDashToEnd());
-		Debug.Log("hellowtf");
 	}
 
 	private IEnumerator waitForDashToEnd()

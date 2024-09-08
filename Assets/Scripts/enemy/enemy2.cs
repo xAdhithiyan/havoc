@@ -7,7 +7,7 @@ using UnityEngine;
 public class enemy2 : EnemyBase
 {
 	[Header("movement")]
-	[SerializeField] private Transform _playerPosiiton;
+	[SerializeField] private Player _player;
 	[SerializeField] private float _lerpSpeed;
 	private Vector3 _towardsPlayerDirection;
 
@@ -24,19 +24,24 @@ public class enemy2 : EnemyBase
 	[Header("health values")]
 	private float _maxHealth = 6f;
 	private float _currentHealth;
+	private float attackDamage = 3;
 	
 	private Rigidbody2D _rb;
 	private Animator _animator;
 
 	private void Start()
 	{
+		_player = FindObjectOfType<Player>();
+		if(_player.transform == null ) {
+			Debug.Log("null");
+		}
 		_rb = GetComponent<Rigidbody2D>();
 		_animator = GetComponent<Animator>();
 		_currentHealth = _maxHealth;
 	}
 	private void Update()
 	{
-		_towardsPlayerDirection = (_playerPosiiton.position - transform.position).normalized; 
+		_towardsPlayerDirection = (_player.transform.position - transform.position).normalized; 
 		if(!_inDash)
 		{
 			movement();
@@ -97,6 +102,8 @@ public class enemy2 : EnemyBase
 			_rb.velocity = Vector3.zero;
 			_animator.SetBool("angry", false);
 			StartCoroutine(waitingTime(true));
+
+			_player.takeDamage(attackDamage);
 		}
 	}
 

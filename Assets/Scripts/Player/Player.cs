@@ -177,6 +177,11 @@ public class Player : MonoBehaviour
 
 	private void playerLookDirection()
 	{
+		if(!MovementActive)
+		{
+			return;
+		}
+
 		Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 		Vector3 directionOfCursor = mousePosition - transform.position;
 

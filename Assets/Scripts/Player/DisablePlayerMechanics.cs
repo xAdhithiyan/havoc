@@ -22,11 +22,6 @@ public class DisablePlayerMechanics : MonoBehaviour
 		player.MovementActive = true;
 	}
 
-	public void checkForMovingToNextScene()
-	{
-
-	}
-
 	private void OnTriggerEnter2D(Collider2D collision)
 	{
 		if(startNextSceneCollider)

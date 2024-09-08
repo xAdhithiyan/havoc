@@ -183,12 +183,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c5916f0f3d5931418937d7a5af8da5a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _playerPosiiton: {fileID: 0}
+  _player: {fileID: 0}
   _lerpSpeed: 4.5
-  _dashRange: 2
+  _dashRange: 4
   _layerMask:
     serializedVersion: 2
     m_Bits: 256
-  _frontDashSpeed: 30
+  _frontDashSpeed: 40
   _waitingTime: 2
-  _dashTime: 0.4
+  _dashTime: 0.3

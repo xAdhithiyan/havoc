@@ -40,6 +40,7 @@ public class enemy5 : EnemyBase
 
 	private void Start()
 	{
+		_player = FindObjectOfType<Player>();
 		_rb = GetComponent<Rigidbody2D>();
 		_currentHealth = _maxHealth;
 	}

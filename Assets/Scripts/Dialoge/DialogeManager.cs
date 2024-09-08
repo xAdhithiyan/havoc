@@ -45,7 +45,7 @@ public class DialogeManager : MonoBehaviour
     if (dialogesQueue.Count == 0)
     {
       EndDialoge();
-      return; 
+      return;  
     }
     EachDialoge currentDialoge = dialogesQueue.Dequeue();
     NameText.text = currentDialoge.name;
