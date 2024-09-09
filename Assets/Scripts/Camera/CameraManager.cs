@@ -14,11 +14,9 @@ public class CameraManager : MonoBehaviour
 }
 
 /* 
- - animation and particle effects and sound
- - the entire gameplay loop
- - 2nd cutscene 
- - menu
-
- - path finder
- - shaders
+ - transition
+ - win/death  
+ - menu 
+ - animtaion and particle effect
+ - dialoge box and health bar ui change and dialoges
 */

@@ -17,6 +17,8 @@ public class TimeLineManager : MonoBehaviour
 	public dialogeWithTime[] dialoges;
 	private Queue<dialogeWithTime> dialogesQueue;
 	public PlayableDirector playableDirector;
+	public GameObject Adam;
+	public DisablePlayerMechanics player;
 
 	private bool coroutinePLaying = false;
 	private bool checkResuming = false;
@@ -28,6 +30,8 @@ public class TimeLineManager : MonoBehaviour
 		{
 			dialogesQueue.Enqueue(dialoges[i]);
 		}
+
+		playableDirector.stopped += OnPlayableDirectorStopped;
 	}
 
 	private void Update()
@@ -60,6 +64,15 @@ public class TimeLineManager : MonoBehaviour
 			playableDirector.playableGraph.GetRootPlayable(0).Play();
 			coroutinePLaying = false;
 			checkResuming = false;
+		}
+	}
+
+	void OnPlayableDirectorStopped(PlayableDirector director)
+	{
+		if (director == playableDirector)
+		{
+			player.startNextSceneCollider = true;
+			Destroy(Adam);
 		}
 	}
 }

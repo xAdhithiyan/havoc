@@ -22,7 +22,6 @@ public class EnemyManager : MonoBehaviour
 	private int currentTotalEnemies;
 	private int maxEnemyIndex = 0;
 	private int RandomEnemy;
-	private Vector3 currentTriggerSpawn;
 
 	private Vector3 randomSpawn;
 	private List<GameObject> activeEnimes = new List<GameObject>();
@@ -31,16 +30,26 @@ public class EnemyManager : MonoBehaviour
 	private float maxEnimiesInGame = 20;
 
 	private bool checkTrigger = true;
+	private enemySpawn currentTriggerSpawn;
+	private GameObject currentTriggerObject;
+	private bool foundPlayer = false;
+	private bool waitForNextTriggerBool = false;
+
+	[SerializeField] TargetIndicator targetIndicator;
 
 	private void Awake()
 	{
 		StartCoroutine(Spawing());	
 		currentTotalEnemies = totalEneimes;
-		currentTriggerSpawn = enemies[0].SpawnPoint.position;
+		currentTriggerSpawn = enemies[0];
 	}
 
 	private void Update()
 	{
+		if(waitForNextTriggerBool)
+		{
+			waitForNextTrigger();
+		}
 		if(checkTrigger)
 		{
 			TriggerEachEnemy(currentTriggerSpawn);
@@ -54,7 +63,7 @@ public class EnemyManager : MonoBehaviour
 		while (true && totalEneimes < maxEnimiesInGame)
 		{
 			activeEnimes.RemoveAll(enemy => enemy == null);
-			if(activeEnimes.Count < maxEnimiesAtOnce && !checkTrigger)
+			if(activeEnimes.Count < maxEnimiesAtOnce && !checkTrigger && !waitForNextTriggerBool)
 			{
 				GenerateRandom();
 				GameObject spawned = Instantiate(enemies[RandomEnemy].enemyObjectPrefab, randomSpawn, Quaternion.identity);
@@ -66,8 +75,8 @@ public class EnemyManager : MonoBehaviour
 				{
 					maxEnemyIndex++;
 					currentTotalEnemies += 5;
-					currentTriggerSpawn = enemies[maxEnemyIndex].SpawnPoint.position;
-					checkTrigger = true;
+					currentTriggerSpawn = enemies[maxEnemyIndex];
+					waitForNextTriggerBool = true;
 				}
 			}
 			yield return wait;
@@ -81,18 +90,41 @@ public class EnemyManager : MonoBehaviour
 		randomSpawn = new Vector3 (randomX, randomY, 0);
 	}
 
-	private void TriggerEachEnemy(Vector3 spawnPoint)
+	private void waitForNextTrigger()
 	{
-		Collider2D player = Physics2D.OverlapCircle(spawnPoint, triggerRadius, playerLayer);
-		if(player!= null)
+		if(activeEnimes.Count == 0) {
+			checkTrigger = true;
+			waitForNextTriggerBool = false;
+		}
+	}
+
+	private void TriggerEachEnemy(enemySpawn currentTriggerEnemy)
+	{
+		Debug.Log("checkingfortrigger");
+		if(!foundPlayer)
+		{
+			targetIndicator.gameObject.SetActive(true);
+		}
+
+		Collider2D player = Physics2D.OverlapCircle(currentTriggerEnemy.SpawnPoint.position , triggerRadius, playerLayer);
+		if (player != null && !foundPlayer)
 		{
 			Debug.Log("Triggered");
+			targetIndicator.StopArrow();
+			currentTriggerObject = Instantiate(currentTriggerEnemy.enemyObjectPrefab, currentTriggerEnemy.SpawnPoint.position + new Vector3(2,2,0), Quaternion.identity);
+			foundPlayer = true;
+		}
+		if(currentTriggerObject == null && foundPlayer) {
 			checkTrigger = false;
+			foundPlayer = false;
 		}
 	}
 
 	private void OnDrawGizmosSelected()
 	{
-		Gizmos.DrawWireSphere(currentTriggerSpawn, triggerRadius);
+		if (currentTriggerSpawn != null)
+		{
+			Gizmos.DrawWireSphere(currentTriggerSpawn.SpawnPoint.position, triggerRadius);
+		}
 	}
 }

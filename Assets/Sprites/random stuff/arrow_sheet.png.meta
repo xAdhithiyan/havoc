@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 3dbfe34c5d458dd488574dc7566d5070
+guid: 72f83dd212c77aa45ae876f8a8616c57
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -110,13 +110,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Adam_run_16x16_0
+      name: arrow_sheet_0
       rect:
         serializedVersion: 2
         x: 0
-        y: 0
-        width: 16
-        height: 32
+        y: 83
+        width: 28
+        height: 22
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -124,20 +124,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 85c5b800ce312794bb79f6096ee7ffd3
-      internalID: 1822560853
+      spriteID: 2fb1d5dd39f98d249995dea26225940e
+      internalID: -471890614
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Adam_run_16x16_1
+      name: arrow_sheet_1
       rect:
         serializedVersion: 2
-        x: 16
-        y: 0
-        width: 16
-        height: 32
+        x: 28
+        y: 83
+        width: 28
+        height: 22
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -145,20 +145,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ad1fa71e285ecac4b9a827c494423105
-      internalID: -1440174714
+      spriteID: 262644c5e5158a341bca70ae460939cf
+      internalID: 1364319557
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Adam_run_16x16_2
+      name: arrow_sheet_2
       rect:
         serializedVersion: 2
-        x: 32
-        y: 0
-        width: 16
-        height: 32
+        x: 56
+        y: 83
+        width: 28
+        height: 22
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -166,20 +166,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0b7a89fa7e25d3d4b8e0e90bd8cb3403
-      internalID: 141796141
+      spriteID: fcd7a69fdca61c047b1cf246c4744ca3
+      internalID: -1818900991
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Adam_run_16x16_3
+      name: arrow_sheet_3
       rect:
         serializedVersion: 2
-        x: 48
-        y: 0
-        width: 16
-        height: 32
+        x: 84
+        y: 83
+        width: 28
+        height: 22
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -187,20 +187,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f3141b3f6f5c0504db6e5a77b2ba1357
-      internalID: -173767513
+      spriteID: 91715050fc5b602489e1f4108b0cf74d
+      internalID: -1081146902
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Adam_run_16x16_4
+      name: arrow_sheet_4
       rect:
         serializedVersion: 2
-        x: 64
-        y: 0
-        width: 16
-        height: 32
+        x: 0
+        y: 61
+        width: 28
+        height: 22
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -208,20 +208,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9bf7cdaf21b31ed44b2d36cf8b6d2860
-      internalID: -1622693493
+      spriteID: 36aa2c5dcf8774e41823edf154e659a1
+      internalID: 343991651
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Adam_run_16x16_5
+      name: arrow_sheet_5
       rect:
         serializedVersion: 2
-        x: 80
-        y: 0
-        width: 16
-        height: 32
+        x: 28
+        y: 61
+        width: 28
+        height: 22
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -229,20 +229,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: bd07e07d13248c848afe4633a5cfe9a3
-      internalID: -1190524868
+      spriteID: f82d176af9296c141944d748825a20b4
+      internalID: -823994191
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Adam_run_16x16_6
+      name: arrow_sheet_6
       rect:
         serializedVersion: 2
-        x: 96
-        y: 0
-        width: 16
-        height: 32
+        x: 56
+        y: 61
+        width: 28
+        height: 22
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -250,20 +250,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6e2a9239c6dc19b409c048c181df240d
-      internalID: -914954022
+      spriteID: 2de4359909f2f534fa2fc7ca66ad04e5
+      internalID: 226765151
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Adam_run_16x16_7
+      name: arrow_sheet_7
       rect:
         serializedVersion: 2
-        x: 112
-        y: 0
-        width: 16
-        height: 32
+        x: 84
+        y: 61
+        width: 28
+        height: 22
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -271,20 +271,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d32cb06234c567c478157cda7bb95b76
-      internalID: 3058086
+      spriteID: 2d6d4e9e6dd9b4248be9000fa22eb7e1
+      internalID: 810348622
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Adam_run_16x16_8
+      name: arrow_sheet_8
       rect:
         serializedVersion: 2
-        x: 128
-        y: 0
-        width: 16
-        height: 32
+        x: 0
+        y: 39
+        width: 28
+        height: 22
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -292,20 +292,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 07531052406bd1e47a2bf23325f500b2
-      internalID: 1059523445
+      spriteID: c865946fa581fcb45a7ba35cb4d317f8
+      internalID: -2124748828
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Adam_run_16x16_9
+      name: arrow_sheet_9
       rect:
         serializedVersion: 2
-        x: 144
-        y: 0
-        width: 16
-        height: 32
+        x: 28
+        y: 39
+        width: 28
+        height: 22
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -313,20 +313,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: aa35cea0de7bd174e89f13d8564df623
-      internalID: 919889484
+      spriteID: 908bf4f11b4e21147a9d7730a12cfc69
+      internalID: -1841403859
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Adam_run_16x16_10
+      name: arrow_sheet_10
       rect:
         serializedVersion: 2
-        x: 160
-        y: 0
-        width: 16
-        height: 32
+        x: 56
+        y: 39
+        width: 28
+        height: 22
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -334,20 +334,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ea86fcd30e1b44d49a213c995e6bfaad
-      internalID: 1988797006
+      spriteID: d4cf82076432c934797ab2c8ed2f8e88
+      internalID: 330400826
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Adam_run_16x16_11
+      name: arrow_sheet_11
       rect:
         serializedVersion: 2
-        x: 176
-        y: 0
-        width: 16
-        height: 32
+        x: 84
+        y: 39
+        width: 28
+        height: 22
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -355,20 +355,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3a75f805acd8933488188dcb79b32302
-      internalID: 1928675130
+      spriteID: b41049bdbb5e7074195516ed20f70a6c
+      internalID: -162798093
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Adam_run_16x16_12
+      name: arrow_sheet_12
       rect:
         serializedVersion: 2
-        x: 192
-        y: 0
-        width: 16
-        height: 32
+        x: 0
+        y: 17
+        width: 28
+        height: 22
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -376,20 +376,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5333ae219c7be28408c45d68c57a7039
-      internalID: 1220313188
+      spriteID: 36e02f0c84212e946aa3b5d54036e96a
+      internalID: 294280421
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Adam_run_16x16_13
+      name: arrow_sheet_13
       rect:
         serializedVersion: 2
-        x: 208
-        y: 0
-        width: 16
-        height: 32
+        x: 28
+        y: 17
+        width: 28
+        height: 22
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -397,20 +397,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5f1e4db97f9985242a30b74884daa535
-      internalID: 939803572
+      spriteID: 26f365fa98bb9944da1d15cddd3c269f
+      internalID: 1479076463
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Adam_run_16x16_14
+      name: arrow_sheet_14
       rect:
         serializedVersion: 2
-        x: 224
-        y: 0
-        width: 16
-        height: 32
+        x: 56
+        y: 17
+        width: 28
+        height: 22
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -418,20 +418,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: fa9f1ff5ec7d47446982a06bf75e33c1
-      internalID: 564936108
+      spriteID: c671218857f9b5947b5de0ec5b5f65af
+      internalID: 1516263663
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Adam_run_16x16_15
+      name: arrow_sheet_15
       rect:
         serializedVersion: 2
-        x: 240
-        y: 0
-        width: 16
-        height: 32
+        x: 84
+        y: 17
+        width: 28
+        height: 22
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -439,176 +439,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c52749cd9985474468302942f1c0c0e0
-      internalID: 1339929812
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Adam_run_16x16_16
-      rect:
-        serializedVersion: 2
-        x: 256
-        y: 0
-        width: 16
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: bd1eb444dde2098469cb57640f7671a6
-      internalID: 2083855276
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Adam_run_16x16_17
-      rect:
-        serializedVersion: 2
-        x: 272
-        y: 0
-        width: 16
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 82c267e652c954b4b9d6892761c27b26
-      internalID: 1766304060
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Adam_run_16x16_18
-      rect:
-        serializedVersion: 2
-        x: 288
-        y: 0
-        width: 16
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 582b0828156d29d4c816c10cafacd55e
-      internalID: -497075370
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Adam_run_16x16_19
-      rect:
-        serializedVersion: 2
-        x: 304
-        y: 0
-        width: 16
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 5366d1d1b49a2124f937e5c5b69e1f26
-      internalID: 1660342306
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Adam_run_16x16_20
-      rect:
-        serializedVersion: 2
-        x: 320
-        y: 0
-        width: 16
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 54689602cb269424e88501ecef2527ba
-      internalID: -1265892139
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Adam_run_16x16_21
-      rect:
-        serializedVersion: 2
-        x: 336
-        y: 0
-        width: 16
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: e4b598ae0f2cfc3489956742a9e011bb
-      internalID: 1276083268
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Adam_run_16x16_22
-      rect:
-        serializedVersion: 2
-        x: 352
-        y: 0
-        width: 16
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 74437b6a9ef50204b9fe12f3c8b375d2
-      internalID: 850312337
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Adam_run_16x16_23
-      rect:
-        serializedVersion: 2
-        x: 368
-        y: 0
-        width: 16
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 82963693234b81142b738b484b0402aa
-      internalID: -1461015820
+      spriteID: 693f7c87e85986e44a5e7f8f16db9776
+      internalID: -235586683
       vertices: []
       indices: 
       edges: []
@@ -624,30 +456,22 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Adam_run_16x16_0: 1822560853
-      Adam_run_16x16_1: -1440174714
-      Adam_run_16x16_10: 1988797006
-      Adam_run_16x16_11: 1928675130
-      Adam_run_16x16_12: 1220313188
-      Adam_run_16x16_13: 939803572
-      Adam_run_16x16_14: 564936108
-      Adam_run_16x16_15: 1339929812
-      Adam_run_16x16_16: 2083855276
-      Adam_run_16x16_17: 1766304060
-      Adam_run_16x16_18: -497075370
-      Adam_run_16x16_19: 1660342306
-      Adam_run_16x16_2: 141796141
-      Adam_run_16x16_20: -1265892139
-      Adam_run_16x16_21: 1276083268
-      Adam_run_16x16_22: 850312337
-      Adam_run_16x16_23: -1461015820
-      Adam_run_16x16_3: -173767513
-      Adam_run_16x16_4: -1622693493
-      Adam_run_16x16_5: -1190524868
-      Adam_run_16x16_6: -914954022
-      Adam_run_16x16_7: 3058086
-      Adam_run_16x16_8: 1059523445
-      Adam_run_16x16_9: 919889484
+      arrow_sheet_0: -471890614
+      arrow_sheet_1: 1364319557
+      arrow_sheet_10: 330400826
+      arrow_sheet_11: -162798093
+      arrow_sheet_12: 294280421
+      arrow_sheet_13: 1479076463
+      arrow_sheet_14: 1516263663
+      arrow_sheet_15: -235586683
+      arrow_sheet_2: -1818900991
+      arrow_sheet_3: -1081146902
+      arrow_sheet_4: 343991651
+      arrow_sheet_5: -823994191
+      arrow_sheet_6: 226765151
+      arrow_sheet_7: 810348622
+      arrow_sheet_8: -2124748828
+      arrow_sheet_9: -1841403859
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

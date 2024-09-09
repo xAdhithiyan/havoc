@@ -13,7 +13,7 @@ public class enemy5Base : MonoBehaviour
 	private int _directionY = 1;
 
 	private Vector3 _offsetPlayerPosition;
-	private GameObject _currentEnemy5;
+	private enemy5 _currentEnemy5;
 	private Animator _animator;
 
 	private bool _movingAwayFromPlayer = true;
@@ -92,9 +92,9 @@ public class enemy5Base : MonoBehaviour
 
 	private IEnumerator standForAttack()
 	{
-		_currentEnemy5 = GameObject.FindWithTag("enemy5");
+		_currentEnemy5 = GetComponentInParent<enemy5>();
 		yield return new WaitForSeconds(2f);
-		_currentEnemy5.GetComponent<enemy5>()._endJump = true;	
+		_currentEnemy5._endJump = true;	
 	}
 
 	private IEnumerator WaitForDeathAnimation()

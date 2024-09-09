@@ -20,7 +20,7 @@ public class enemy5 : EnemyBase
 	[SerializeField] private float indicateValueOffset;
 	[SerializeField] private float dogeWindow;
 	private enemy5Base _singleEnemy5Base;
-	private GameObject _currentEnemy5Base;
+	private enemy5Base _currentEnemy5Base;
 
 	[Header("Emeny 5 Health Values")]
 	[SerializeField] private float _attackValue;
@@ -81,12 +81,12 @@ public class enemy5 : EnemyBase
 		yield return new WaitForSeconds(2f);
 		_rb.velocity = Vector2.zero;
 
-		_singleEnemy5Base = Instantiate(_enemy5BasePrefab, _player.transform.position, Quaternion.identity);
+		_singleEnemy5Base = Instantiate(_enemy5BasePrefab, _player.transform.position, Quaternion.identity, transform);
 	}
 
 	private void endJump()
 	{
-		_currentEnemy5Base = GameObject.FindWithTag("enemy5Base");
+		_currentEnemy5Base = GetComponentInChildren<enemy5Base>();
 
 		if( _currentEnemy5Base != null)
 		{
@@ -95,7 +95,7 @@ public class enemy5 : EnemyBase
 
 			if ((transform.position.y - _currentEnemy5Base.transform.position.y) < indicateValueOffset)
 			{
-				_currentEnemy5Base.GetComponent<enemy5Base>().playAlertAnimation();
+				_currentEnemy5Base.playAlertAnimation();
 			}
 
 			if(transform.position.y < _currentEnemy5Base.transform.position.y)
@@ -113,7 +113,7 @@ public class enemy5 : EnemyBase
 
 				_endJump = false;
 				hasDashed = false;
-				_currentEnemy5Base.GetComponent<enemy5Base>().playHitAnimation();
+				_currentEnemy5Base.playHitAnimation();
 				StartCoroutine(Restart());
 			} else if ((transform.position.y - _currentEnemy5Base.transform.position.y) < dogeWindow)
 			{
