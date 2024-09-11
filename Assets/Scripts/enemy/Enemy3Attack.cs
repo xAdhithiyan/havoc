@@ -19,6 +19,7 @@ public class Enemy3Attack : MonoBehaviour
 		_rb = GetComponent<Rigidbody2D>();
 		movement();
 	}
+
 	private void movement()
 	{
 		_player = GameObject.FindWithTag("MainPlayer");

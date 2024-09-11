@@ -43,6 +43,11 @@ public class enemy1 : EnemyBase
 	}
 	private void Update()
 	{
+		if(_player == null)
+		{
+			return;
+		}
+
 		if(_idlePosition || _dead || _player.transform == null)
 		{
 			return;
@@ -101,7 +106,6 @@ public class enemy1 : EnemyBase
 	}
 	private void die()
 	{
-		Debug.Log("Enemy died");
 		_animator.SetTrigger("death");
 		StartCoroutine(WaitForDeathAnimation());
 	}

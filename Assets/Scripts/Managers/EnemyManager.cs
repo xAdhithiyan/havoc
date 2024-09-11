@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using Unity.VisualScripting;
 using UnityEngine;
+using static UnityEditor.Experimental.GraphView.GraphView;
 
 [System.Serializable]
 public class enemySpawn
@@ -34,6 +35,7 @@ public class EnemyManager : MonoBehaviour
 	private GameObject currentTriggerObject;
 	private bool foundPlayer = false;
 	private bool waitForNextTriggerBool = false;
+	private bool checkFinishGame = false;
 
 	[SerializeField] TargetIndicator targetIndicator;
 
@@ -54,6 +56,10 @@ public class EnemyManager : MonoBehaviour
 		{
 			TriggerEachEnemy(currentTriggerSpawn);
 		}
+		if(checkFinishGame)
+		{
+			FinishGame();
+		}
 	}
 
 	private IEnumerator Spawing()
@@ -70,13 +76,22 @@ public class EnemyManager : MonoBehaviour
 				activeEnimes.Add(spawned);
 				totalEneimes++;
 
-				// need to change
 				if (totalEneimes == currentTotalEnemies + 5)
 				{
 					maxEnemyIndex++;
-					currentTotalEnemies += 5;
-					currentTriggerSpawn = enemies[maxEnemyIndex];
-					waitForNextTriggerBool = true;
+					if(maxEnemyIndex < enemies.Length)
+					{
+						Debug.Log($"{currentTotalEnemies}, {maxEnemyIndex}");
+						currentTotalEnemies += 5;
+						currentTriggerSpawn = enemies[maxEnemyIndex];
+						waitForNextTriggerBool = true;
+					}
+				}
+				if( totalEneimes == maxEnimiesInGame)
+				{
+					waitForNextTriggerBool = false;
+					checkTrigger = false;
+					checkFinishGame = true;
 				}
 			}
 			yield return wait;
@@ -100,7 +115,6 @@ public class EnemyManager : MonoBehaviour
 
 	private void TriggerEachEnemy(enemySpawn currentTriggerEnemy)
 	{
-		Debug.Log("checkingfortrigger");
 		if(!foundPlayer)
 		{
 			targetIndicator.gameObject.SetActive(true);
@@ -109,7 +123,6 @@ public class EnemyManager : MonoBehaviour
 		Collider2D player = Physics2D.OverlapCircle(currentTriggerEnemy.SpawnPoint.position , triggerRadius, playerLayer);
 		if (player != null && !foundPlayer)
 		{
-			Debug.Log("Triggered");
 			targetIndicator.StopArrow();
 			currentTriggerObject = Instantiate(currentTriggerEnemy.enemyObjectPrefab, currentTriggerEnemy.SpawnPoint.position + new Vector3(2,2,0), Quaternion.identity);
 			foundPlayer = true;
@@ -118,6 +131,19 @@ public class EnemyManager : MonoBehaviour
 			checkTrigger = false;
 			foundPlayer = false;
 		}
+	}
+
+	private void FinishGame()
+	{
+		activeEnimes.RemoveAll(enemy => enemy == null);
+		if (activeEnimes.Count == 0)
+		{
+			targetIndicator.gameObject.SetActive(false);
+			targetIndicator.gameObject.SetActive(true);
+			FindObjectOfType<Player>().SpawnBlueHair();
+			checkFinishGame = false;
+		}
+		Debug.Log(activeEnimes.Count);
 	}
 
 	private void OnDrawGizmosSelected()

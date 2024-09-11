@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using System.Xml.Serialization;
 using Unity.VisualScripting;
+using UnityEditor;
 using UnityEditor.Experimental.GraphView;
 using UnityEditor.ShaderGraph.Internal;
 using UnityEngine;
@@ -52,8 +53,15 @@ public class Player : MonoBehaviour
 	private float _maxShuriken = 3;
 	private float _currentShuriken = 0f;
 
+	[Header("Blue Hair")]
+	public bool blueHair;
+	public GameObject blueHairObject;
+	public Transform blueHairTransform;
 
+
+	[Header("Random")]
 	[SerializeField] private HealthBar _healthBar;
+	[SerializeField] private GameObject MainMenu;
 	 
 	private Vector2 _directionOfPlayer;
 	private Rigidbody2D _rb;
@@ -71,6 +79,8 @@ public class Player : MonoBehaviour
 	public bool ArenaSceneActive = true;
 	public bool MovementActive = true;
 
+
+
 	void Start()
   {
     _rb = GetComponent<Rigidbody2D>();
@@ -86,6 +96,13 @@ public class Player : MonoBehaviour
 		_healthBar.setMaxHealth(_currentHealth);
 		_healthBar.setMaxDashValue(_currentDash);
 		_healthBar.setMaxShurikenValue(_currentShuriken);
+		}
+		if(MainMenu != null) {
+			MainMenu.SetActive(false);
+		}
+		if(blueHair)
+		{
+			_animator.SetBool("blueHair", true);
 		}
 	}
 
@@ -243,7 +260,19 @@ public class Player : MonoBehaviour
 	{
 		_currentHealth -= damage;
 		_healthBar.setHealth(_currentHealth);
+
+		if(_currentHealth <= 0 )
+		{
+			Death();
+		}
+
 		Debug.Log("player has taken damage" + _currentHealth);
+	}
+
+	public void Death()
+	{
+		Destroy(gameObject);
+		MainMenu.SetActive(true);
 	}
 
 	private void dashRefresh()
@@ -262,5 +291,10 @@ public class Player : MonoBehaviour
 			_currentShuriken += _shurikenIncrement * Time.deltaTime;
 			_healthBar.setShurikenValue(_currentShuriken);
 		}
+	}
+
+	public void SpawnBlueHair()
+	{
+		Instantiate(blueHairObject, blueHairTransform.position, blueHairTransform.rotation);
 	}
 }

@@ -5,6 +5,7 @@ using UnityEngine;
 public class DisablePlayerMechanics : MonoBehaviour
 {
 	public bool startNextSceneCollider;
+	public Animator animator;
 
 	[SerializeField] private Player player;
 	private void Awake()

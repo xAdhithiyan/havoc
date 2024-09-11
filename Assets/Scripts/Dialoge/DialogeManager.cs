@@ -67,7 +67,6 @@ public class DialogeManager : MonoBehaviour
     animator.SetBool("isOpen", false);
 		dialogeActive = false;
 
-    Debug.Log(lastDialoge);
     if (lastDialoge)
     {
       player.startNextSceneCollider = true;

@@ -20,4 +20,14 @@ public class LevelLoader : MonoBehaviour
 		yield return new WaitForSeconds(transitionTime);
 		SceneManager.LoadScene(levelIndex);
 	}
+
+	public void LoadArena()
+	{
+		SceneManager.LoadScene(3);
+	}
+
+	public void LoadMainMenu()
+	{
+		SceneManager.LoadScene(0);
+	}
 }

@@ -35,6 +35,11 @@ public class enemy3 : EnemyBase
 
 	private void Update()
 	{
+		if (_player == null)
+		{
+			return;
+		}
+
 		lookDirection();
 		if (_isMoving)
 		{

@@ -46,6 +46,11 @@ public class enemy5 : EnemyBase
 	}
 	private void Update()
 	{
+		if (_player == null)
+		{
+			return;
+		}
+
 		if (!_playerFound)
 		{
 			movement();

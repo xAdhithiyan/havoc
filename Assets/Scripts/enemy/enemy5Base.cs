@@ -29,6 +29,10 @@ public class enemy5Base : MonoBehaviour
 
 	private void Update()
 	{
+		if (_player == null)
+		{
+			return;
+		}
 		_offsetPlayerPosition = _player.transform.position + new Vector3(0,0.5f,0);
 		if (_moving)
 		{
