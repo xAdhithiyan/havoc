@@ -55,12 +55,15 @@ public class DialogeManager : MonoBehaviour
   IEnumerator TypeSentence(string sentence)
   {
     DialogeText.text = "";
-    foreach (char i in sentence)
+		FindObjectOfType<AudioManager>().Play("Dialoge");
+    
+		foreach (char i in sentence)
     {
       DialogeText.text += i;
       yield return new WaitForSeconds(0.03f);
     }
-  }
+		FindObjectOfType<AudioManager>().Stop("Dialoge");
+	}
 
   public void EndDialoge()
   {

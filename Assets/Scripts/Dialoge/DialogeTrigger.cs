@@ -17,6 +17,11 @@ public class DialogeTrigger : MonoBehaviour
 	private bool checkForPlayer = true;
 	private bool runSecondScript = true;
 
+	private void Start()
+	{
+		FindObjectOfType<AudioManager>().Play("BarberTheme", true);
+	}
+
 	public void Update()
 	{
 		trigger(dialoge);
@@ -26,7 +31,6 @@ public class DialogeTrigger : MonoBehaviour
 			StartCoroutine(WaitAndTriiggerNextDialoge());	
 		}
 	}
-
 	private void trigger(Dialoge dialoge)
 	{
 		if (checkForPlayer)

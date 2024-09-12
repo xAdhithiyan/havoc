@@ -1,0 +1,111 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &3441437247515272826
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8792398354912667251}
+  - component: {fileID: 51189909159672681}
+  m_Layer: 0
+  m_Name: AudioManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8792398354912667251
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3441437247515272826}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -4.8829083, y: -5.52274, z: 0.0016392716}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &51189909159672681
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3441437247515272826}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 29338410a6e716a4cb191f57749d010e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sounds:
+  - name: Knife
+    clip: {fileID: 8300000, guid: 881328f222c47e84eaf552989d72da90, type: 3}
+    volume: 0.2
+    source: {fileID: 0}
+  - name: KnifeThrow
+    clip: {fileID: 8300000, guid: eea7f752bd663a74a81637a855b6f822, type: 3}
+    volume: 0.2
+    source: {fileID: 0}
+  - name: PlayerHit
+    clip: {fileID: 8300000, guid: 702abaa90f14dcc4ab9e229084acab77, type: 3}
+    volume: 0.1
+    source: {fileID: 0}
+  - name: PlayerDeath
+    clip: {fileID: 8300000, guid: ce78cd84fd97f18439d80d5da798fa8f, type: 3}
+    volume: 0.5
+    source: {fileID: 0}
+  - name: Dash
+    clip: {fileID: 8300000, guid: 9a73c105f75ea4c4aa0f57a52c5d230f, type: 3}
+    volume: 0.5
+    source: {fileID: 0}
+  - name: EnemySpawn
+    clip: {fileID: 8300000, guid: 8a7770df613b08f4a90a7bca84e8a715, type: 3}
+    volume: 0.4
+    source: {fileID: 0}
+  - name: EnemyDash
+    clip: {fileID: 8300000, guid: b2e5bc2688cb9e14d891aafdbb53a11a, type: 3}
+    volume: 0.3
+    source: {fileID: 0}
+  - name: Enemy3Throw
+    clip: {fileID: 8300000, guid: 77c4689be98a77b44a9b19333721ea6b, type: 3}
+    volume: 0.3
+    source: {fileID: 0}
+  - name: Enemy5Up
+    clip: {fileID: 8300000, guid: c440d55075b7bc144804a03223fff73d, type: 3}
+    volume: 0.3
+    source: {fileID: 0}
+  - name: Enemy5Hit
+    clip: {fileID: 8300000, guid: 3cbf4433411075242b1ec328e0e524f4, type: 3}
+    volume: 0.3
+    source: {fileID: 0}
+  - name: MainTheme
+    clip: {fileID: 8300000, guid: 239b2c6d86f6cee48b75e2367a83ca93, type: 3}
+    volume: 0.3
+    source: {fileID: 0}
+  - name: Dialoge
+    clip: {fileID: 8300000, guid: 2ad9813f14643504696160bcf96aed17, type: 3}
+    volume: 1
+    source: {fileID: 0}
+  - name: PlayerWalking
+    clip: {fileID: 8300000, guid: 37f59feb439c67f459047f217fb77b0f, type: 3}
+    volume: 1
+    source: {fileID: 0}
+  - name: BarberTheme
+    clip: {fileID: 8300000, guid: e2442393724cdc249b0935290bec2062, type: 3}
+    volume: 0.3
+    source: {fileID: 0}
+  - name: GameOver
+    clip: {fileID: 8300000, guid: 0ee23b3f9f4e4a947b610edbc9606616, type: 3}
+    volume: 0.3
+    source: {fileID: 0}
+  - name: Victory
+    clip: {fileID: 8300000, guid: 241657e5e669f974780137bc85f8de24, type: 3}
+    volume: 0.3
+    source: {fileID: 0}

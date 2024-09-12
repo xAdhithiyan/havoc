@@ -40,6 +40,8 @@ public class BlueHairScripts : MonoBehaviour
 		{
 			Destroy(player.gameObject);
 		}
+		FindObjectOfType<AudioManager>().Play("Victory");
+		FindObjectOfType<AudioManager>().Stop("MainTheme");
 		WinMenu.SetActive(true);
 	}
 }

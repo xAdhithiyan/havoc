@@ -28,7 +28,7 @@ public class EnemyManager : MonoBehaviour
 	private List<GameObject> activeEnimes = new List<GameObject>();
 
 	private float maxEnimiesAtOnce = 3;
-	private float maxEnimiesInGame = 20;
+	private float maxEnimiesInGame = 4;
 
 	private bool checkTrigger = true;
 	private enemySpawn currentTriggerSpawn;
@@ -38,6 +38,7 @@ public class EnemyManager : MonoBehaviour
 	private bool checkFinishGame = false;
 
 	[SerializeField] TargetIndicator targetIndicator;
+	[SerializeField] private AudioManager audioManager;
 
 	private void Awake()
 	{
@@ -45,7 +46,10 @@ public class EnemyManager : MonoBehaviour
 		currentTotalEnemies = totalEneimes;
 		currentTriggerSpawn = enemies[0];
 	}
-
+	private void Start()
+	{
+		audioManager.Play("MainTheme", true);
+	}
 	private void Update()
 	{
 		if(waitForNextTriggerBool)
@@ -74,15 +78,16 @@ public class EnemyManager : MonoBehaviour
 				GenerateRandom();
 				GameObject spawned = Instantiate(enemies[RandomEnemy].enemyObjectPrefab, randomSpawn, Quaternion.identity);
 				activeEnimes.Add(spawned);
+				audioManager.Play("EnemySpawn");
 				totalEneimes++;
 
-				if (totalEneimes == currentTotalEnemies + 5)
+				if (totalEneimes == currentTotalEnemies + 1)
 				{
 					maxEnemyIndex++;
 					if(maxEnemyIndex < enemies.Length)
 					{
 						Debug.Log($"{currentTotalEnemies}, {maxEnemyIndex}");
-						currentTotalEnemies += 5;
+						currentTotalEnemies += 1;
 						currentTriggerSpawn = enemies[maxEnemyIndex];
 						waitForNextTriggerBool = true;
 					}
@@ -126,6 +131,7 @@ public class EnemyManager : MonoBehaviour
 			targetIndicator.StopArrow();
 			currentTriggerObject = Instantiate(currentTriggerEnemy.enemyObjectPrefab, currentTriggerEnemy.SpawnPoint.position + new Vector3(2,2,0), Quaternion.identity);
 			foundPlayer = true;
+			audioManager.Play("EnemySpawn");
 		}
 		if(currentTriggerObject == null && foundPlayer) {
 			checkTrigger = false;

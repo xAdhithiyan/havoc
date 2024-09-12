@@ -21,7 +21,7 @@ MonoBehaviour:
 '
   - name: Me
     sentence: Sure. My name is ...
-  - name: Me
+  - name: Bob
     sentence: Our Stylist is currently busy with another client. It wont take more
       then 5 mins.
   - name: Me

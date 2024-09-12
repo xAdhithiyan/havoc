@@ -6,7 +6,10 @@ using UnityEngine.UI;
 public class EnemyHealthBar : MonoBehaviour
 {
 	[SerializeField] private Slider slider;
-
+	private void Update()
+	{
+		transform.rotation = Quaternion.identity;
+	}
 	public void setEnemyMaxHealth(float maxHealth)
 	{
 		slider.maxValue = maxHealth;

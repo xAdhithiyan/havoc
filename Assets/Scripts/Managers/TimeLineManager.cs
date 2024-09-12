@@ -17,6 +17,7 @@ public class TimeLineManager : MonoBehaviour
 	public dialogeWithTime[] dialoges;
 	private Queue<dialogeWithTime> dialogesQueue;
 	public PlayableDirector playableDirector;
+	public PlayableDirector playableDirectorBackground;
 	public GameObject Adam;
 	public DisablePlayerMechanics player;
 
@@ -33,6 +34,7 @@ public class TimeLineManager : MonoBehaviour
 
 		playableDirector.stopped += OnPlayableDirectorStopped;
 	}
+
 
 	private void Update()
 	{
@@ -52,6 +54,10 @@ public class TimeLineManager : MonoBehaviour
 		dialogeWithTime currentDialogeTrack = dialogesQueue.Dequeue();
 		yield return new WaitForSeconds(currentDialogeTrack.time);
 		playableDirector.playableGraph.GetRootPlayable(0).Pause();
+		if(dialogesQueue.Count == 0)
+		{
+			playableDirectorBackground.playableGraph.GetRootPlayable(0).Pause();
+		}
 		FindAnyObjectByType<DialogeManager>().startDialoge(currentDialogeTrack.dialoge, false);
 		checkResuming = true;
 	}		
@@ -60,7 +66,6 @@ public class TimeLineManager : MonoBehaviour
 	{
 		if(!FindObjectOfType<DialogeManager>().dialogeActive)
 		{
-			Debug.Log("asjda");
 			playableDirector.playableGraph.GetRootPlayable(0).Play();
 			coroutinePLaying = false;
 			checkResuming = false;

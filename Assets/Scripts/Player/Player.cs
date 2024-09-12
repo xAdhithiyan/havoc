@@ -62,7 +62,8 @@ public class Player : MonoBehaviour
 	[Header("Random")]
 	[SerializeField] private HealthBar _healthBar;
 	[SerializeField] private GameObject MainMenu;
-	 
+	[SerializeField] private AudioManager _audioManager;
+
 	private Vector2 _directionOfPlayer;
 	private Rigidbody2D _rb;
 	private Animator _animator;
@@ -78,8 +79,6 @@ public class Player : MonoBehaviour
 	// controlled from disablePlayerMechanics script
 	public bool ArenaSceneActive = true;
 	public bool MovementActive = true;
-
-
 
 	void Start()
   {
@@ -133,7 +132,7 @@ public class Player : MonoBehaviour
 			return;
 		}
 
-		_animator.SetBool("dash", _dashEnabled);	
+		_animator.SetBool("dash", _dashEnabled);
 		if (_dashEnabled)
 		{
 			return;
@@ -222,6 +221,7 @@ public class Player : MonoBehaviour
 			if (Input.GetKeyDown(_attackKey))
 			{
 				_animator.SetTrigger("attack");
+				_audioManager.Play("Knife");
 				// gives all the objects with collider that overlap the formed circle; 
 				Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(_attackPoint.position, _attackRange, _layerMask);
 				foreach (Collider2D enemy in hitEnemies)
@@ -246,6 +246,7 @@ public class Player : MonoBehaviour
 			_singleShuriken = Instantiate(_shurikenPrefab, transform.position, transform.rotation);
 			_singleShuriken.throwShuriken(transform.position, mousePosition);
 			_currentShuriken -= 1;
+			_audioManager.Play("KnifeThrow");
 		}
 	}
 	private void OnDrawGizmosSelected()
@@ -258,19 +259,22 @@ public class Player : MonoBehaviour
 	
 	public void takeDamage(float damage)
 	{
-		_currentHealth -= damage;
+		//_currentHealth -= damage;
 		_healthBar.setHealth(_currentHealth);
+		_audioManager.Play("PlayerHit");
 
 		if(_currentHealth <= 0 )
 		{
 			Death();
 		}
 
-		Debug.Log("player has taken damage" + _currentHealth);
 	}
 
 	public void Death()
 	{
+		_audioManager.Play("PlayerDeath");
+		_audioManager.Play("GameOver");
+		_audioManager.Stop("MainTheme");
 		Destroy(gameObject);
 		MainMenu.SetActive(true);
 	}

@@ -14,8 +14,6 @@ public class CameraManager : MonoBehaviour
 }
 
 /* 
- - animtaion and particle effect
- - dialoge box and health bar ui change and dialoges
- - add health for each enemy.
+ - particle
  - fix that bug (going through walls and enemy 5).
 */

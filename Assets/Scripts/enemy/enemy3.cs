@@ -25,12 +25,15 @@ public class enemy3 : EnemyBase
 	private bool _isMoving = true;
 	private int _count = 0;
 
+	//[SerializeField] private EnemyHealthBar _enemyHealthBar;
+
 	private void Start()
 	{
 		_player = FindObjectOfType<Player>();
 		_rb = GetComponent<Rigidbody2D>();
 		_animator = GetComponent<Animator>();
 		_currentHealth = _maxHealth;
+		//_enemyHealthBar.setEnemyMaxHealth(_currentHealth);
 	}
 
 	private void Update()
@@ -88,6 +91,7 @@ public class enemy3 : EnemyBase
 			_animator.SetTrigger("attack");
 			yield return new WaitForSeconds(0.8f);
 			_singleEnemy3Atttack = Instantiate(_enemy3AttackPrefab, transform.position, Quaternion.identity);
+			FindObjectOfType<AudioManager>().Play("Enemy3Throw");
 			_count++;
 		}
 		_count = 0;
@@ -106,6 +110,7 @@ public class enemy3 : EnemyBase
 	{
 		_currentHealth -= damage;
 		_animator.SetTrigger("hit");
+		//_enemyHealthBar.setEnemyHealth(_currentHealth);
 		if( _currentHealth <= 0)
 		{
 			Die();

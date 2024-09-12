@@ -8,9 +8,24 @@ public class DisablePlayerMechanics : MonoBehaviour
 	public Animator animator;
 
 	[SerializeField] private Player player;
+	private bool checkForWalkSound = true;
+
 	private void Awake()
 	{
 		player.ArenaSceneActive = false;
+	}
+
+	private void Update()
+	{
+		if(checkForWalkSound && player.GetComponent<Rigidbody2D>().velocity != Vector2.zero)
+		{
+			FindObjectOfType<AudioManager>().Play("PlayerWalking", true);
+			checkForWalkSound = false;
+		} else if(!checkForWalkSound && player.GetComponent<Rigidbody2D>().velocity == Vector2.zero)
+		{
+			FindObjectOfType<AudioManager>().Stop("PlayerWalking");
+			checkForWalkSound = true;
+		}
 	}
 
 	public void disableMovement()

@@ -169,6 +169,7 @@ MonoBehaviour:
     m_Bits: 256
   _moveSpeed: 3
   _enemy3AttackPrefab: {fileID: 8373945587580038828, guid: 048fe73709b3cb442bdd62e6722e0066, type: 3}
+  _enemyHealthBar: {fileID: 0}
 --- !u!95 &5241514401010643555
 Animator:
   serializedVersion: 5

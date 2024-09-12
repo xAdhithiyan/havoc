@@ -37,12 +37,15 @@ public class enemy5 : EnemyBase
 	public bool _endJump = false;
 	private bool hasDashed = false;
 
+	[SerializeField] private EnemyHealthBar _enemyHealthBar;
 
 	private void Start()
 	{
 		_player = FindObjectOfType<Player>();
 		_rb = GetComponent<Rigidbody2D>();
 		_currentHealth = _maxHealth;
+
+		_enemyHealthBar.setEnemyMaxHealth(_currentHealth);
 	}
 	private void Update()
 	{
@@ -82,7 +85,8 @@ public class enemy5 : EnemyBase
 	{
 		yield return new WaitForSeconds(1f);
 		_rb.velocity = Vector2.up * _jumpValue;
-		
+		FindObjectOfType<AudioManager>().Play("Enemy5Up");
+
 		yield return new WaitForSeconds(2f);
 		_rb.velocity = Vector2.zero;
 
@@ -93,10 +97,11 @@ public class enemy5 : EnemyBase
 	{
 		_currentEnemy5Base = GetComponentInChildren<enemy5Base>();
 
-		if( _currentEnemy5Base != null)
+		if ( _currentEnemy5Base != null)
 		{
 			Vector3 towardsEnemy5Base = (_currentEnemy5Base.transform.position - transform.position);
 			_rb.velocity = towardsEnemy5Base.normalized * _jumpValue;
+
 
 			if ((transform.position.y - _currentEnemy5Base.transform.position.y) < indicateValueOffset)
 			{
@@ -150,7 +155,8 @@ public class enemy5 : EnemyBase
 	{
 		_currentHealth -= damage;
 		_animator.SetTrigger("hit");
-		if(_currentHealth <= 0){
+		_enemyHealthBar.setEnemyHealth(_currentHealth);
+		if (_currentHealth <= 0){
 			death();
 		}
 	}

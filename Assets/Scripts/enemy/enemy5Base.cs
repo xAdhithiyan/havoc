@@ -91,6 +91,7 @@ public class enemy5Base : MonoBehaviour
 	{
 		_moving = false;
 		_animator.SetTrigger("hit");
+		FindObjectOfType<AudioManager>().Play("Enemy5Hit");
 		StartCoroutine(WaitForDeathAnimation());
 	}
 

@@ -14,10 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialoges:
   - name: Adam
-    sentence: Hey. U must be ...
+    sentence: You must be ...
   - name: Me
-    sentence: I am here for my haircuit (what did he call me???)
+    sentence: Yeah.
   - name: Adam
-    sentence: 'Please take a seat.
-
-'
+    sentence: 'What kind of a haircut do u need. '
+  - name: Me
+    sentence: Just clean up the sides and keep the top sharp.
+  - name: Adam
+    sentence: 'Please take a seat. '

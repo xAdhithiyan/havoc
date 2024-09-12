@@ -29,6 +29,8 @@ public class enemy2 : EnemyBase
 	private Rigidbody2D _rb;
 	private Animator _animator;
 
+	[SerializeField] private EnemyHealthBar _enemyHealthBar;
+
 	private void Start()
 	{
 		_player = FindObjectOfType<Player>();
@@ -38,6 +40,8 @@ public class enemy2 : EnemyBase
 		_rb = GetComponent<Rigidbody2D>();
 		_animator = GetComponent<Animator>();
 		_currentHealth = _maxHealth;
+
+		_enemyHealthBar.setEnemyMaxHealth(_currentHealth);
 	}
 	private void Update()
 	{
@@ -96,6 +100,7 @@ public class enemy2 : EnemyBase
 	{
 		_rb.velocity = _towardsPlayerDirection * _frontDashSpeed;
 		_inWaiting = true;
+		FindObjectOfType<AudioManager>().Play("EnemyDash");
 		StartCoroutine(dashTime());
 	}
 	private void OnCollisionEnter2D(Collision2D collision)
@@ -116,6 +121,7 @@ public class enemy2 : EnemyBase
 	{
 		_currentHealth -= damage;
 		_animator.SetTrigger("attack");
+		_enemyHealthBar.setEnemyHealth(_currentHealth);
 		if ( _currentHealth <= 0)
 		{
 			die();
