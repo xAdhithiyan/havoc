@@ -4,7 +4,6 @@ using System.Runtime.CompilerServices;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.WSA;
 
 public class enemy5 : EnemyBase
 {
@@ -14,6 +13,7 @@ public class enemy5 : EnemyBase
 	[SerializeField] private float _checkRadius;
 	[SerializeField] private LayerMask _playerLayerMask;
 	private float _jumpValue = 40;
+
 
 	[Header("Emeny 5 Base")]
 	[SerializeField] private enemy5Base _enemy5BasePrefab;
@@ -96,12 +96,15 @@ public class enemy5 : EnemyBase
 	private void endJump()
 	{
 		_currentEnemy5Base = GetComponentInChildren<enemy5Base>();
-
+		
 		if ( _currentEnemy5Base != null)
 		{
-			Vector3 towardsEnemy5Base = (_currentEnemy5Base.transform.position - transform.position);
-			_rb.velocity = towardsEnemy5Base.normalized * _jumpValue;
-
+			if(transform.position.y > _currentEnemy5Base.transform.position.y)
+			{
+				Vector3 towardsEnemy5Base = (_currentEnemy5Base.transform.position - transform.position);
+				transform.position += towardsEnemy5Base.normalized * _jumpValue * Time.deltaTime;
+				Debug.Log(_rb.velocity);
+			}
 
 			if ((transform.position.y - _currentEnemy5Base.transform.position.y) < indicateValueOffset)
 			{

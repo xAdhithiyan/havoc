@@ -19,6 +19,7 @@ public class enemy1 : EnemyBase
 	[SerializeField] private Player _player;
 
 	[SerializeField] private EnemyHealthBar _enemyHealthBar;
+	[SerializeField] private LayerMask _playerLayerMask;
 	
 	private Vector3 _towardsPlayerDirection;
 	private bool _onContact = false;
@@ -32,6 +33,7 @@ public class enemy1 : EnemyBase
 
 	private Rigidbody2D _rb;
 	private Animator _animator;
+	
 
 	private void Start()
 	{
@@ -67,11 +69,14 @@ public class enemy1 : EnemyBase
 
 	private void OnCollisionEnter2D(Collision2D collision)
 	{
-		_onContact = true;
+		if(_playerLayerMask == (1 << collision.gameObject.layer))
+		{
+			_onContact = true;
 
-		// player takes damage
-		_player.takeDamage(_attackValue);
-		StartCoroutine(waitForDashToEnd());
+			// player takes damage
+			_player.takeDamage(_attackValue);
+			StartCoroutine(waitForDashToEnd());
+		}
 	}
 
 	private IEnumerator waitForDashToEnd()

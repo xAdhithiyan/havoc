@@ -30,6 +30,7 @@ public class enemy2 : EnemyBase
 	private Animator _animator;
 
 	[SerializeField] private EnemyHealthBar _enemyHealthBar;
+	[SerializeField] private LayerMask _playerLayerMask;
 
 	private void Start()
 	{
@@ -105,7 +106,7 @@ public class enemy2 : EnemyBase
 	}
 	private void OnCollisionEnter2D(Collision2D collision)
 	{
-		if(_inWaiting)
+		if(_inWaiting && _playerLayerMask == (1 << collision.gameObject.layer))
 		{
 			StopAllCoroutines();
 			_inWaiting = false;

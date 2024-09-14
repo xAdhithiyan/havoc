@@ -109,7 +109,7 @@ MonoBehaviour:
     m_Bits: 256
   _enemy5BasePrefab: {fileID: -6577223637173097282, guid: be4a885ceb9d2924c806f1f6d4cd96f1, type: 3}
   indicateValueOffset: 14
-  dogeWindow: 0.3
+  dogeWindow: 0.5
   _attackValue: 4
   _maxHealth: 10
   _animator: {fileID: 8371359906796601326}

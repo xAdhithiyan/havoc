@@ -236,6 +236,9 @@ MonoBehaviour:
   _backupTime: 0.3
   _player: {fileID: 0}
   _enemyHealthBar: {fileID: 7253861047944162197}
+  _playerLayerMask:
+    serializedVersion: 2
+    m_Bits: 256
 --- !u!95 &6002944116535623002
 Animator:
   serializedVersion: 5

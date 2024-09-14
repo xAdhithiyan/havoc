@@ -5,8 +5,6 @@ using System.Runtime.CompilerServices;
 using System.Xml.Serialization;
 using Unity.VisualScripting;
 using UnityEditor;
-using UnityEditor.Experimental.GraphView;
-using UnityEditor.ShaderGraph.Internal;
 using UnityEngine;
 using UnityEngine.Rendering.Universal;
 using UnityEngine.UIElements;
@@ -103,6 +101,8 @@ public class Player : MonoBehaviour
 		{
 			_animator.SetBool("blueHair", true);
 		}
+
+		_rb.collisionDetectionMode = CollisionDetectionMode2D.Continuous;
 	}
 
 	private void Update()
@@ -259,7 +259,7 @@ public class Player : MonoBehaviour
 	
 	public void takeDamage(float damage)
 	{
-		//_currentHealth -= damage;
+		_currentHealth -= damage;
 		_healthBar.setHealth(_currentHealth);
 		_audioManager.Play("PlayerHit");
 
@@ -296,6 +296,7 @@ public class Player : MonoBehaviour
 			_healthBar.setShurikenValue(_currentShuriken);
 		}
 	}
+
 
 	public void SpawnBlueHair()
 	{

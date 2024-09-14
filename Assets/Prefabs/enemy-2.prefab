@@ -194,6 +194,9 @@ MonoBehaviour:
   _waitingTime: 2
   _dashTime: 0.3
   _enemyHealthBar: {fileID: 4119322752034432477}
+  _playerLayerMask:
+    serializedVersion: 2
+    m_Bits: 256
 --- !u!1001 &2119104814265998048
 PrefabInstance:
   m_ObjectHideFlags: 0

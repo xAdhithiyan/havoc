@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using Unity.VisualScripting;
 using UnityEngine;
-using static UnityEditor.Experimental.GraphView.GraphView;
 
 [System.Serializable]
 public class enemySpawn
@@ -28,7 +27,7 @@ public class EnemyManager : MonoBehaviour
 	private List<GameObject> activeEnimes = new List<GameObject>();
 
 	private float maxEnimiesAtOnce = 3;
-	private float maxEnimiesInGame = 4;
+	private float maxEnimiesInGame = 28;
 
 	private bool checkTrigger = true;
 	private enemySpawn currentTriggerSpawn;
@@ -81,13 +80,13 @@ public class EnemyManager : MonoBehaviour
 				audioManager.Play("EnemySpawn");
 				totalEneimes++;
 
-				if (totalEneimes == currentTotalEnemies + 1)
+				if (totalEneimes == currentTotalEnemies + 7)
 				{
 					maxEnemyIndex++;
 					if(maxEnemyIndex < enemies.Length)
 					{
 						Debug.Log($"{currentTotalEnemies}, {maxEnemyIndex}");
-						currentTotalEnemies += 1;
+						currentTotalEnemies += 7;
 						currentTriggerSpawn = enemies[maxEnemyIndex];
 						waitForNextTriggerBool = true;
 					}

@@ -18,6 +18,7 @@ public class shuriken : MonoBehaviour
 	private void Awake()
 	{
 		_rb = GetComponent<Rigidbody2D>();
+		StartCoroutine(Death());
 	}
 
 	private void Update()
@@ -47,5 +48,11 @@ public class shuriken : MonoBehaviour
 		{
 			Destroy(gameObject);
 		}
+	}
+
+	private IEnumerator Death()
+	{
+		yield return new WaitForSeconds(5f);
+		Destroy(gameObject);
 	}
 }
